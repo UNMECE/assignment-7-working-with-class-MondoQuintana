@@ -104,7 +104,7 @@ int main()
     Electric_Field1.setElectric_Field(4,5,6); //set first to different values
     cout<<"EF1 has x = "<<Electric_Field1.getElectric_Fieldx()<<" y = "<<Electric_Field1.getElectric_Fieldy()<< " and z = "<<Electric_Field1.getElectric_Fieldz()<<endl;
     cout<<"Innter Product is "<<Electric_Field1.calculateInnerProductEF()<<endl;
-    Magnetic_Field Magnetic_Field1; //create first EF with default
+    Magnetic_Field Magnetic_Field1; //create first MF with default
     cout<<"MF1 has x = "<<Magnetic_Field1.getMagnetic_Fieldx()<<" y = "<<Magnetic_Field1.getMagnetic_Fieldy()<< " and z = "<<Magnetic_Field1.getMagnetic_Fieldz()<<endl;
     Magnetic_Field1.calculateUnitVectorMF();
     Magnetic_Field Magnetic_Field2(4, 5, 6); //create second with overload
