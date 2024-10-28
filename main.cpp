@@ -34,7 +34,7 @@ public:
     double getElectric_Fieldz(){
         return E[2];
     }
-    double calculateVectorEF(){
+    double calculateInnerProductEF(){
         return pow(E[0],2)+pow(E[1],2)+pow(E[2],2);
     }
     void setElectric_Field(double x, double y, double z){
@@ -75,8 +75,12 @@ public:
     double getMagnetic_Fieldz(){
         return M[2];
     }
-    double calculateVectorMF(){
-        return pow(M[0],2)+pow(M[1],2)+pow(M[2],2);
+    void calculateUnitVectorMF(){
+        double denom = sqrt(pow(M[0],2)+pow(M[1],2)+pow(M[2],2));
+        double x = M[0]/denom;
+        double y = M[1]/denom;
+        double z = M[2]/denom;
+        cout<<"Unit Vector for Magnetic Field is: "<<x<<" , "<<y<<" , "<<z<<endl;
     }
     void setMagnetic_Field(double x, double y, double z){
         this->M[0] = x;
@@ -93,20 +97,19 @@ int main()
 {
     Electric_Field Electric_Field1; //create first EF with default
     cout<<"EF1 has x = "<<Electric_Field1.getElectric_Fieldx()<<" y = "<<Electric_Field1.getElectric_Fieldy()<< " and z = "<<Electric_Field1.getElectric_Fieldz()<<endl;
-    cout<<"Innter Product is "<<Electric_Field1.calculateVectorEF()<<endl;
+    cout<<"Innter Product is "<<Electric_Field1.calculateInnerProductEF()<<endl;
     Electric_Field Electric_Field2(4, 5, 6); //create second with overload
     cout<<"EF2 has x = "<<Electric_Field2.getElectric_Fieldx()<<" y = "<<Electric_Field2.getElectric_Fieldy()<< " and z = "<<Electric_Field2.getElectric_Fieldz()<<endl;
-    cout<<"Inner Product is "<<Electric_Field2.calculateVectorEF()<<endl;
+    cout<<"Inner Product is "<<Electric_Field2.calculateInnerProductEF()<<endl;
     Electric_Field1.setElectric_Field(4,5,6); //set first to different values
     cout<<"EF1 has x = "<<Electric_Field1.getElectric_Fieldx()<<" y = "<<Electric_Field1.getElectric_Fieldy()<< " and z = "<<Electric_Field1.getElectric_Fieldz()<<endl;
-    cout<<"Innter Product is "<<Electric_Field1.calculateVectorEF()<<endl;
+    cout<<"Innter Product is "<<Electric_Field1.calculateInnerProductEF()<<endl;
     Magnetic_Field Magnetic_Field1; //create first EF with default
     cout<<"MF1 has x = "<<Magnetic_Field1.getMagnetic_Fieldx()<<" y = "<<Magnetic_Field1.getMagnetic_Fieldy()<< " and z = "<<Magnetic_Field1.getMagnetic_Fieldz()<<endl;
-    cout<<"Innter Product is "<<Magnetic_Field1.calculateVectorMF()<<endl;
+    Magnetic_Field1.calculateUnitVectorMF();
     Magnetic_Field Magnetic_Field2(4, 5, 6); //create second with overload
     cout<<"MF2 has x = "<<Magnetic_Field2.getMagnetic_Fieldx()<<" y = "<<Magnetic_Field2.getMagnetic_Fieldy()<< " and z = "<<Magnetic_Field2.getMagnetic_Fieldz()<<endl;
-    cout<<"Inner Product is "<<Magnetic_Field2.calculateVectorMF()<<endl;
-    
+    Magnetic_Field2.calculateUnitVectorMF();    
 
     return 0;
 }
